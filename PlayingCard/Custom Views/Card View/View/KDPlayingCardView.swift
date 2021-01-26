@@ -18,29 +18,54 @@ class PlayingCardView: UIView
     var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
-    //MARK: Initializer
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubViews(views: upperLeftCornerLabel,lowerRightCornelLabel)
+    //MARK: Required Initializer
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    
+    //MARK: Code does something that the bound changed
+    /// setNeedsLayout trigger layoutSubviews
+    /// Used to determine the position of my subviews when my view's bound changed
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        configureUpperLeftCornerLabel()
+        configureLowerRightCornerLabel()
     }
     
     
     
     
     //MARK: Draw
+    /// Redraw when you call the setNeedsDisplay
     override func draw(_ rect: CGRect) {
         // Using UIBezierPath
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+        print(cornerRadius)
         UIColor.white.setFill()
         path.addClip()
         path.fill()
     }
     
     
+    
+    //MARK: Configure Upper Left Corner Label
+    fileprivate func configureUpperLeftCornerLabel() {
+        upperLeftCornerLabel.frame.origin = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
+        upperLeftCornerLabel.isHidden     = !isFaceUp
+    }
+    
+    //MARK: Configure Lower Right Corner Label
+    fileprivate func configureLowerRightCornerLabel() {
+        lowerRightCornelLabel.frame.origin = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
+            .offSetBy(dx: -cornerOffset, dy: -cornerOffset)
+            .offSetBy(dx: -lowerRightCornelLabel.frame.size.width, dy: -lowerRightCornelLabel.frame.size.height)
+        
+        lowerRightCornelLabel.isHidden     = !isFaceUp
+        
+    }
 }
 
 
@@ -75,5 +100,11 @@ extension PlayingCardView
             case 13 : return "K"
             default : return "/"
         }
+    }
+}
+
+extension CGPoint {
+    func offSetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
+        return CGPoint(x: x + dx, y: y + dy)
     }
 }

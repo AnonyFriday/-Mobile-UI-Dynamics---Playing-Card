@@ -11,7 +11,6 @@ class KDCornerLabel: UILabel {
 
     var cornerString: NSAttributedString?
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -25,7 +24,6 @@ class KDCornerLabel: UILabel {
         cornerString = NSAttributedString.createCenterAttributedString(string, fontSize: fontSize)
         configure()
     }
-    
     
     private func configure() {
         numberOfLines = 0
