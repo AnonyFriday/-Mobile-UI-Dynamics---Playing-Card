@@ -18,6 +18,7 @@
 		5C7B924125C0034B00E63DF5 /* KDCornerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */; };
 		5C7B924E25C007C200E63DF5 /* NSAttributeString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */; };
 		5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B925125C042D100E63DF5 /* UIView+Ext.swift */; };
+		5C7B926625C0612900E63DF5 /* CGPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */; };
 		5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */; };
 		5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCornerLabel.swift; sourceTree = "<group>"; };
 		5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributeString+Ext.swift"; sourceTree = "<group>"; };
 		5C7B925125C042D100E63DF5 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Ext.swift"; sourceTree = "<group>"; };
 		5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		5C83D4D825B70459000FFF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +74,8 @@
 			children = (
 				5C31992B25B5C0E900EB4EC1 /* Supporting Files */,
 				5C31992925B5C08300EB4EC1 /* Models */,
-				5C7B923625BFFE9E00E63DF5 /* Storyboards */,
 				5C7B923125BFFB7500E63DF5 /* Extensions */,
+				5C7B923625BFFE9E00E63DF5 /* Storyboards */,
 				5C7B923B25BFFED000E63DF5 /* Custom Views */,
 				5C7B923425BFFE9300E63DF5 /* Screens */,
 				5C31991A25B5C07400EB4EC1 /* Assets.xcassets */,
@@ -104,9 +106,10 @@
 		5C7B923125BFFB7500E63DF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */,
-				5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */,
-				5C7B925125C042D100E63DF5 /* UIView+Ext.swift */,
+				5C7B925525C05FCF00E63DF5 /* Int */,
+				5C7B925725C05FD300E63DF5 /* NSAttributeString */,
+				5C7B925A25C05FE400E63DF5 /* UIView */,
+				5C7B926925C0613E00E63DF5 /* CGPoint */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -158,6 +161,38 @@
 				5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5C7B925525C05FCF00E63DF5 /* Int */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */,
+			);
+			path = Int;
+			sourceTree = "<group>";
+		};
+		5C7B925725C05FD300E63DF5 /* NSAttributeString */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */,
+			);
+			path = NSAttributeString;
+			sourceTree = "<group>";
+		};
+		5C7B925A25C05FE400E63DF5 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B925125C042D100E63DF5 /* UIView+Ext.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		5C7B926925C0613E00E63DF5 /* CGPoint */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */,
+			);
+			path = CGPoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +267,7 @@
 			files = (
 				5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */,
 				5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */,
+				5C7B926625C0612900E63DF5 /* CGPoint+Ext.swift in Sources */,
 				5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */,
 				5C31991225B5C07300EB4EC1 /* AppDelegate.swift in Sources */,
 				5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */,

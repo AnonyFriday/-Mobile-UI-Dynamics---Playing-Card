@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlayingCardView: UIView
+class KDPlayingCardView: UIView
 {
     
     private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
@@ -62,7 +62,9 @@ class PlayingCardView: UIView
         lowerRightCornelLabel.frame.origin = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
             .offSetBy(dx: -cornerOffset, dy: -cornerOffset)
             .offSetBy(dx: -lowerRightCornelLabel.frame.size.width, dy: -lowerRightCornelLabel.frame.size.height)
-        
+        lowerRightCornelLabel.transform    = CGAffineTransform.identity
+            .translatedBy(x: lowerRightCornelLabel.frame.size.width, y: lowerRightCornelLabel.frame.size.height)
+            .rotated(by: CGFloat.pi)
         lowerRightCornelLabel.isHidden     = !isFaceUp
         
     }
@@ -70,7 +72,7 @@ class PlayingCardView: UIView
 
 
 //MARK: Extension
-extension PlayingCardView
+extension KDPlayingCardView
 {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight : CGFloat     = 0.06
@@ -103,8 +105,5 @@ extension PlayingCardView
     }
 }
 
-extension CGPoint {
-    func offSetBy(dx: CGFloat, dy: CGFloat) -> CGPoint {
-        return CGPoint(x: x + dx, y: y + dy)
-    }
-}
+
+
