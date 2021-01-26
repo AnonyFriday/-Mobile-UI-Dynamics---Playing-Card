@@ -22,7 +22,7 @@ class KDCornerLabel: UILabel {
     
     convenience init(string: String, fontSize: CGFloat) {
         self.init(frame: .zero)
-        attributedText = configureAttributedString(<#T##string: String##String#>, fontSize: <#T##CGFloat#>)
+        cornerString = NSAttributedString.createCenterAttributedString(string, fontSize: fontSize)
         configure()
     }
     
@@ -34,9 +34,7 @@ class KDCornerLabel: UILabel {
     }
     
     
-    private func configureAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString {
-        var font = UIFont.preferredFont(forTextStyle: .largeTitle).withSize(fontSize)
-    }
+   
     
     
 }

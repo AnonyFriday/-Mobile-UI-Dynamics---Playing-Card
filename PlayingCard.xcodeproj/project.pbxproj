@@ -16,7 +16,8 @@
 		5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */; };
 		5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */; };
 		5C7B924125C0034B00E63DF5 /* KDCornerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */; };
-		5C7B924E25C007C200E63DF5 /* NSAttributeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */; };
+		5C7B924E25C007C200E63DF5 /* NSAttributeString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */; };
+		5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B925125C042D100E63DF5 /* UIView+Ext.swift */; };
 		5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */; };
 		5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +34,8 @@
 		5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPlayingCardView.swift; sourceTree = "<group>"; };
 		5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCornerLabel.swift; sourceTree = "<group>"; };
-		5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributeString.swift; sourceTree = "<group>"; };
+		5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributeString+Ext.swift"; sourceTree = "<group>"; };
+		5C7B925125C042D100E63DF5 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		5C83D4D825B70459000FFF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */,
-				5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */,
+				5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */,
+				5C7B925125C042D100E63DF5 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,9 +232,10 @@
 			files = (
 				5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */,
 				5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */,
+				5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */,
 				5C31991225B5C07300EB4EC1 /* AppDelegate.swift in Sources */,
 				5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */,
-				5C7B924E25C007C200E63DF5 /* NSAttributeString.swift in Sources */,
+				5C7B924E25C007C200E63DF5 /* NSAttributeString+Ext.swift in Sources */,
 				5C31992725B5C08000EB4EC1 /* PlayingCard.swift in Sources */,
 				5C31991425B5C07300EB4EC1 /* SceneDelegate.swift in Sources */,
 				5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */,
