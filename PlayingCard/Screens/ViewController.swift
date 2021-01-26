@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         for _ in 1...10 {
-            print(deck.drawCard())
+            print(deck.drawCard()!)
         }
     }
 }

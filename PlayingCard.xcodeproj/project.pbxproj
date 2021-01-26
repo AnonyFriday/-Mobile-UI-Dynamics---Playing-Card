@@ -14,6 +14,9 @@
 		5C31991E25B5C07400EB4EC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C31991C25B5C07400EB4EC1 /* LaunchScreen.storyboard */; };
 		5C31992725B5C08000EB4EC1 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31992625B5C08000EB4EC1 /* PlayingCard.swift */; };
 		5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */; };
+		5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */; };
+		5C7B924125C0034B00E63DF5 /* KDCornerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */; };
+		5C7B924E25C007C200E63DF5 /* NSAttributeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */; };
 		5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */; };
 		5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* ViewController.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +31,9 @@
 		5C31991F25B5C07400EB4EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C31992625B5C08000EB4EC1 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
 		5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPlayingCardView.swift; sourceTree = "<group>"; };
+		5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCornerLabel.swift; sourceTree = "<group>"; };
+		5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributeString.swift; sourceTree = "<group>"; };
 		5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		5C83D4D825B70459000FFF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,10 +70,10 @@
 			children = (
 				5C31992B25B5C0E900EB4EC1 /* Supporting Files */,
 				5C31992925B5C08300EB4EC1 /* Models */,
-				5C31991725B5C07300EB4EC1 /* Main.storyboard */,
-				5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */,
-				5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */,
-				5C83D4D825B70459000FFF41 /* ViewController.swift */,
+				5C7B923625BFFE9E00E63DF5 /* Storyboards */,
+				5C7B923125BFFB7500E63DF5 /* Extensions */,
+				5C7B923B25BFFED000E63DF5 /* Custom Views */,
+				5C7B923425BFFE9300E63DF5 /* Screens */,
 				5C31991A25B5C07400EB4EC1 /* Assets.xcassets */,
 				5C31991F25B5C07400EB4EC1 /* Info.plist */,
 			);
@@ -77,6 +83,7 @@
 		5C31992925B5C08300EB4EC1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */,
 				5C31992625B5C08000EB4EC1 /* PlayingCard.swift */,
 			);
 			path = Models;
@@ -90,6 +97,64 @@
 				5C31991C25B5C07400EB4EC1 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C7B923125BFFB7500E63DF5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B921D25BF9F0C00E63DF5 /* Int+Ext.swift */,
+				5C7B924D25C007C200E63DF5 /* NSAttributeString.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5C7B923425BFFE9300E63DF5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5C83D4D825B70459000FFF41 /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5C7B923625BFFE9E00E63DF5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5C31991725B5C07300EB4EC1 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5C7B923B25BFFED000E63DF5 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B924525C0055700E63DF5 /* Card View */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		5C7B924525C0055700E63DF5 /* Card View */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B924925C005DE00E63DF5 /* Label */,
+				5C7B924B25C005E300E63DF5 /* View */,
+			);
+			path = "Card View";
+			sourceTree = "<group>";
+		};
+		5C7B924925C005DE00E63DF5 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B924025C0034B00E63DF5 /* KDCornerLabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		5C7B924B25C005E300E63DF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B923825BFFECC00E63DF5 /* KDPlayingCardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,11 +228,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */,
+				5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */,
 				5C31991225B5C07300EB4EC1 /* AppDelegate.swift in Sources */,
 				5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */,
+				5C7B924E25C007C200E63DF5 /* NSAttributeString.swift in Sources */,
 				5C31992725B5C08000EB4EC1 /* PlayingCard.swift in Sources */,
 				5C31991425B5C07300EB4EC1 /* SceneDelegate.swift in Sources */,
 				5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */,
+				5C7B924125C0034B00E63DF5 /* KDCornerLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
