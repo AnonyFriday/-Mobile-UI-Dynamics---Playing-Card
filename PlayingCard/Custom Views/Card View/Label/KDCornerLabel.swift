@@ -29,6 +29,14 @@ class KDCornerLabel: UILabel {
         numberOfLines = 0
         attributedText = cornerString
         sizeToFit()
+        adjustsFontForContentSizeCategory = true
+    }
+    
+    
+    //MARK: Reset to adapt the change of font size accessibility
+    func resetToFitFontSizeDynamically() {
+        frame.size = .zero
+        sizeToFit()
     }
     
     

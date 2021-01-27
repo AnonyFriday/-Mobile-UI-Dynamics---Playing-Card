@@ -13,8 +13,8 @@ class KDPlayingCardView: UIView
     private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     
-    var rank:       Int     = 5 { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var suit:       String  = "❤️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var rank:       Int     = 12 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
     var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
@@ -29,6 +29,7 @@ class KDPlayingCardView: UIView
     //MARK: Code does something that the bound changed
     /// setNeedsLayout trigger layoutSubviews
     /// Used to determine the position of my subviews when my view's bound changed
+    /// Recommend to put all those constraints, layout inside this line of code
     override func layoutSubviews() {
         super.layoutSubviews()
         configureUpperLeftCornerLabel()
@@ -36,38 +37,51 @@ class KDPlayingCardView: UIView
     }
     
     
-    
-    
     //MARK: Draw
     /// Redraw when you call the setNeedsDisplay
     override func draw(_ rect: CGRect) {
         // Using UIBezierPath
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-        print(cornerRadius)
         UIColor.white.setFill()
         path.addClip()
         path.fill()
+        
+        
+        if let faceCardImage = UIImage(named: rankString+suit) {
+            print(faceCardImage)
+            faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+        }
     }
     
     
-    
+    //MARK: Trail Collection Redraw
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsDisplay()
+        setNeedsLayout()
+    }
+
+
     //MARK: Configure Upper Left Corner Label
     fileprivate func configureUpperLeftCornerLabel() {
+        upperLeftCornerLabel.resetToFitFontSizeDynamically()
         upperLeftCornerLabel.frame.origin = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
         upperLeftCornerLabel.isHidden     = !isFaceUp
     }
     
     //MARK: Configure Lower Right Corner Label
     fileprivate func configureLowerRightCornerLabel() {
-        lowerRightCornelLabel.frame.origin = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
-            .offSetBy(dx: -cornerOffset, dy: -cornerOffset)
-            .offSetBy(dx: -lowerRightCornelLabel.frame.size.width, dy: -lowerRightCornelLabel.frame.size.height)
+        lowerRightCornelLabel.resetToFitFontSizeDynamically()
+        
         lowerRightCornelLabel.transform    = CGAffineTransform.identity
             .translatedBy(x: lowerRightCornelLabel.frame.size.width, y: lowerRightCornelLabel.frame.size.height)
             .rotated(by: CGFloat.pi)
-        lowerRightCornelLabel.isHidden     = !isFaceUp
+        lowerRightCornelLabel.frame.origin = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
+            .offSetBy(dx: -cornerOffset, dy: -cornerOffset)
+            .offSetBy(dx: -lowerRightCornelLabel.frame.size.width, dy: -lowerRightCornelLabel.frame.size.height)
         
+        lowerRightCornelLabel.isHidden     = !isFaceUp
     }
+
 }
 
 
@@ -104,6 +118,8 @@ extension KDPlayingCardView
         }
     }
 }
+
+
 
 
 
