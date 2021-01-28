@@ -11,8 +11,9 @@ enum ImageFromXCAssets {
     static let cardBackImage    = UIImage(named: "cardback")!
     static var cardFaceUpCardImage : ((String) -> UIImage?) = { imageName in
         if let image = UIImage(named: imageName) {
+            print("Hello: ", imageName)
             return image
         }
-        return UIImage(systemName: "questionmark")
+        return nil
     }
 }

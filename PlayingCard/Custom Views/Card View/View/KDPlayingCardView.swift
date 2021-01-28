@@ -13,9 +13,9 @@ class KDPlayingCardView: UIView
     private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     
-    var rank:       Int     = 11 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var rank:       Int     = 3 { didSet { setNeedsLayout(); setNeedsDisplay() }}
     var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var isFaceUp:   Bool    = false { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
     //MARK: Required Initializer
@@ -91,6 +91,59 @@ class KDPlayingCardView: UIView
     
     //MARK: Draw pips on the card
     func drawPips() {
+        let pipsPerRowForRank = [[0],[1],[1,1],[1,1,1],[2,2],[2,1,2],[2,2,2],[2,1,2,2],[2,2,2,2],[2,2,1,2,2],[2,2,2,2,2]]
+        
+        func createPipString(thatFits pipRect: CGRect) -> NSAttributedString {
+            let maxVerticalPipCount = CGFloat(pipsPerRowForRank.reduce(0) { max($1.count, $0)  })
+            let maxHorizontalPipCount = CGFloat(pipsPerRowForRank.reduce(0) { max($1.max() ?? 0, $0) })
+            
+            let verticalPipRowSpacing = pipRect.size.height / maxVerticalPipCount
+            print("verticalPipRowSpacing: ", verticalPipRowSpacing)
+            
+            let attemptedPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: verticalPipRowSpacing)
+            print("attemptedPipString.size().height: ", attemptedPipString.size().height)
+            
+            let probablyOkayPipStringFontSize = verticalPipRowSpacing / (attemptedPipString.size().height / verticalPipRowSpacing)
+            print("probablyOkayPipStringFontSize: ", probablyOkayPipStringFontSize)
+
+            let probablyOkayPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: probablyOkayPipStringFontSize)
+            if probablyOkayPipString.size().width > pipRect.size.width / maxHorizontalPipCount {
+                return NSAttributedString.createCenterAttributedString(suit, fontSize: probablyOkayPipStringFontSize / (probablyOkayPipString.size().width / (pipRect.size.width / maxHorizontalPipCount)))
+            } else {
+                return probablyOkayPipString
+            }
+        }
+        
+        // Check the rank that fits each item of the array
+        if pipsPerRowForRank.indices.contains(rank) {
+            let pipsPerRow = pipsPerRowForRank[rank]
+            
+            var pipRect = bounds.insetBy(dx: cornerOffset, dy: cornerOffset).insetBy(dx: upperLeftCornerLabel.bounds.width, dy: upperLeftCornerLabel.bounds.height / 2)
+            
+            let pipString = createPipString(thatFits: pipRect)
+            
+            let pipRowSpacing = pipRect.size.height / CGFloat(pipsPerRow.count)
+        
+            pipRect.size.height = pipString.size().height
+            print(pipRect.origin.y)
+            pipRect.origin.y += (pipRowSpacing - pipRect.size.height) / 2
+            print((pipRowSpacing - pipRect.size.height) / 2)
+            print(pipRect.origin.y)
+            
+            for pipCount in pipsPerRow {
+                switch pipCount {
+                case 1:
+                    pipString.draw(in: pipRect)
+                case 2:
+                    pipString.draw(in: pipRect.leftHalf)
+                    pipString.draw(in: pipRect.rightHalf)
+                default:
+                    break
+                }
+                pipRect.origin.y += pipRowSpacing
+            }
+        }
+        
         
     }
     
@@ -102,10 +155,11 @@ class KDPlayingCardView: UIView
 extension KDPlayingCardView
 {
     private struct SizeRatio {
-        static let cornerRadiusToBoundsHeight : CGFloat     = 0.06
-        static let cornerFontSizeToBoundHeight : CGFloat    = 0.085
-        static let cornerOffsetToCornerRadius  : CGFloat    = 0.33
+        static let cornerRadiusToBoundsHeight    : CGFloat  = 0.06
+        static let cornerFontSizeToBoundHeight   : CGFloat  = 0.085
+        static let cornerOffsetToCornerRadius    : CGFloat  = 0.33
         static let faceCardImageSizeToBoundsSize : CGFloat  = 0.75
+        static let pipsFontSizeToSpacePerRow     : CGFloat  = 0.6
     }
     
     private var cornerRadius : CGFloat {
