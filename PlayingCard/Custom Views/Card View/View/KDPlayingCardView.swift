@@ -13,9 +13,9 @@ class KDPlayingCardView: UIView
     private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     
-    var rank:       Int     = 1 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var rank:       Int     = 11 { didSet { setNeedsLayout(); setNeedsDisplay() }}
     var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var isFaceUp:   Bool    = false { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
     //MARK: Required Initializer
@@ -46,16 +46,15 @@ class KDPlayingCardView: UIView
         path.fill()
         
         //Draw Image inside the view's bound ( 11,12,13 )
-        if isFaceUp {
-            if let faceCardImage = UIImage(named: rankString+suit) {
-                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
-            } else {
-                drawPips()
-            }
-        } else {
-            if let cardBackImage = UIImage(named: "cardback") {
-                cardBackImage.draw(in: bounds)
-            }
+        switch isFaceUp {
+            case true:
+                if let image = ImageFromXCAssets.cardFaceUpCardImage(rankString+suit) {
+                    image.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                } else {
+                    drawPips()
+                }
+            case false:
+                ImageFromXCAssets.cardBackImage.draw(in: bounds)
         }
         
     }
@@ -128,9 +127,10 @@ extension KDPlayingCardView
             case 11 : return "J"
             case 12 : return "Q"
             case 13 : return "K"
-            default : return "/"
+            default : return "?"
         }
     }
+    
 }
 
 
