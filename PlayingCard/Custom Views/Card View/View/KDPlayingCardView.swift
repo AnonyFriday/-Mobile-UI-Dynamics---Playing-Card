@@ -13,7 +13,7 @@ class KDPlayingCardView: UIView
     private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     
-    var rank:       Int     = 12 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    var rank:       Int     = 1 { didSet { setNeedsLayout(); setNeedsDisplay() }}
     var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
     var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
@@ -23,7 +23,6 @@ class KDPlayingCardView: UIView
         super.init(coder: coder)
         self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
     }
-    
     
     
     //MARK: Code does something that the bound changed
@@ -46,11 +45,19 @@ class KDPlayingCardView: UIView
         path.addClip()
         path.fill()
         
-        
-        if let faceCardImage = UIImage(named: rankString+suit) {
-            print(faceCardImage)
-            faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+        //Draw Image inside the view's bound ( 11,12,13 )
+        if isFaceUp {
+            if let faceCardImage = UIImage(named: rankString+suit) {
+                faceCardImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+            } else {
+                drawPips()
+            }
+        } else {
+            if let cardBackImage = UIImage(named: "cardback") {
+                cardBackImage.draw(in: bounds)
+            }
         }
+        
     }
     
     
@@ -82,6 +89,13 @@ class KDPlayingCardView: UIView
         lowerRightCornelLabel.isHidden     = !isFaceUp
     }
 
+    
+    //MARK: Draw pips on the card
+    func drawPips() {
+        
+    }
+    
+    
 }
 
 
