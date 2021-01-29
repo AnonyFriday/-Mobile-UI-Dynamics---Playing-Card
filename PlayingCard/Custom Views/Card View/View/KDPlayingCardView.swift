@@ -18,7 +18,27 @@ class KDPlayingCardView: UIView
     @IBInspectable var rank:       Int     = 3 { didSet { setNeedsLayout(); setNeedsDisplay() }}
     @IBInspectable var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
     @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var faceCardImageScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet{ setNeedsDisplay()}}
+
+    @objc func flipCard() {
+        isFaceUp = !isFaceUp
+    }
     
+    @objc func scaleCardImageOfFaceType(byApplyingGestureRecogniter gesture: UIPinchGestureRecognizer?) {
+        if let pinchGesture = gesture {
+            switch pinchGesture.state {
+            case .began:
+                pinchGesture.scale = 1.0
+                fallthrough
+            case .changed, .ended:
+                print("Hello")
+                faceCardImageScale *= pinchGesture.scale
+                pinchGesture.scale = 1.0
+            default: break
+
+            }
+        }
+    }
     
     //MARK: Required Initializer
     required init?(coder: NSCoder) {
@@ -30,6 +50,9 @@ class KDPlayingCardView: UIView
         super.init(frame: frame)
         self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
     }
+    
+    
+    
     
     
     //MARK: Code does something that the bound changed
@@ -56,7 +79,8 @@ class KDPlayingCardView: UIView
         switch isFaceUp {
             case true:
                 if let image = ImageFromXCAssets.cardFaceUpCardImage(rankString+suit) {
-                    image.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                    print(rankString+suit)
+                    image.draw(in: bounds.zoom(by: faceCardImageScale))
                 } else {
                     drawPips()
                 }
@@ -107,13 +131,13 @@ class KDPlayingCardView: UIView
             let maxHorizontalPipCount = CGFloat(pipsPerRowForRank.reduce(0) { max($1.max() ?? 0, $0) })
             
             let verticalPipRowSpacing = pipRect.size.height / maxVerticalPipCount
-            print("verticalPipRowSpacing: ", verticalPipRowSpacing)
+   
             
             let attemptedPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: verticalPipRowSpacing)
-            print("attemptedPipString.size().height: ", attemptedPipString.size().height)
-            
+     
+
             let probablyOkayPipStringFontSize = verticalPipRowSpacing / (attemptedPipString.size().height / verticalPipRowSpacing)
-            print("probablyOkayPipStringFontSize: ", probablyOkayPipStringFontSize)
+        
 
             let probablyOkayPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: probablyOkayPipStringFontSize)
             if probablyOkayPipString.size().width > pipRect.size.width / maxHorizontalPipCount {

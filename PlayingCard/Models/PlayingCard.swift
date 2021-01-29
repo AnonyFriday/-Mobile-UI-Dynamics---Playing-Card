@@ -9,7 +9,7 @@ struct PlayingCard : CustomStringConvertible
     
     enum Suit: String, CustomStringConvertible
     {
-        case hearts     = "❤️"
+        case hearts     = "♥️"
         case spades     = "♠️"
         case clubs      = "♣️"
         case diamonds   = "♦️"
@@ -47,6 +47,17 @@ struct PlayingCard : CustomStringConvertible
                     return kind
                 case .numeric(pipsCount: let pipsCount):
                     return "\(pipsCount)"
+            }
+        }
+        
+        var numericalRank : Int {
+            switch self {
+            case .ace: return 1
+            case .numeric(pipsCount: let pipsCount): return pipsCount
+            case .face(let face) where face == "J": return 11
+            case .face(let face) where face == "Q": return 12
+            case .face(let face) where face == "K": return 13
+            default: return 0 
             }
         }
     }
