@@ -7,22 +7,35 @@
 
 import UIKit
 
+@IBDesignable
 class KDPlayingCardView: UIView
 {
     
-    private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
-    private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
     
-    var rank:       Int     = 3 { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
+    @IBInspectable var rank:       Int     = 5 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    
+    private var centerStringLabel : NSAttributedString {
+        return NSAttributedString.createCenterAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
+    }
+    
+    private lazy var upperLeftCornerLabel  = KDCornerLabel(attributedString: centerStringLabel)
+    private lazy var lowerRightCornelLabel = KDCornerLabel(attributedString: centerStringLabel)
     
     //MARK: Required Initializer
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
     }
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
+    }
+    
     
     
     //MARK: Code does something that the bound changed
@@ -69,15 +82,19 @@ class KDPlayingCardView: UIView
 
     //MARK: Configure Upper Left Corner Label
     fileprivate func configureUpperLeftCornerLabel() {
+        upperLeftCornerLabel.attributedText = centerStringLabel
         upperLeftCornerLabel.resetToFitFontSizeDynamically()
+        
         upperLeftCornerLabel.frame.origin = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
         upperLeftCornerLabel.isHidden     = !isFaceUp
     }
     
     //MARK: Configure Lower Right Corner Label
     fileprivate func configureLowerRightCornerLabel() {
+        lowerRightCornelLabel.attributedText = centerStringLabel
         lowerRightCornelLabel.resetToFitFontSizeDynamically()
         
+        print(centerStringLabel)
         lowerRightCornelLabel.transform    = CGAffineTransform.identity
             .translatedBy(x: lowerRightCornelLabel.frame.size.width, y: lowerRightCornelLabel.frame.size.height)
             .rotated(by: CGFloat.pi)
@@ -96,16 +113,9 @@ class KDPlayingCardView: UIView
         func createPipString(thatFits pipRect: CGRect) -> NSAttributedString {
             let maxVerticalPipCount = CGFloat(pipsPerRowForRank.reduce(0) { max($1.count, $0)  })
             let maxHorizontalPipCount = CGFloat(pipsPerRowForRank.reduce(0) { max($1.max() ?? 0, $0) })
-            
             let verticalPipRowSpacing = pipRect.size.height / maxVerticalPipCount
-            print("verticalPipRowSpacing: ", verticalPipRowSpacing)
-            
             let attemptedPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: verticalPipRowSpacing)
-            print("attemptedPipString.size().height: ", attemptedPipString.size().height)
-            
             let probablyOkayPipStringFontSize = verticalPipRowSpacing / (attemptedPipString.size().height / verticalPipRowSpacing)
-            print("probablyOkayPipStringFontSize: ", probablyOkayPipStringFontSize)
-
             let probablyOkayPipString = NSAttributedString.createCenterAttributedString(suit, fontSize: probablyOkayPipStringFontSize)
             if probablyOkayPipString.size().width > pipRect.size.width / maxHorizontalPipCount {
                 return NSAttributedString.createCenterAttributedString(suit, fontSize: probablyOkayPipStringFontSize / (probablyOkayPipString.size().width / (pipRect.size.width / maxHorizontalPipCount)))
@@ -117,19 +127,12 @@ class KDPlayingCardView: UIView
         // Check the rank that fits each item of the array
         if pipsPerRowForRank.indices.contains(rank) {
             let pipsPerRow = pipsPerRowForRank[rank]
-            
             var pipRect = bounds.insetBy(dx: cornerOffset, dy: cornerOffset).insetBy(dx: upperLeftCornerLabel.bounds.width, dy: upperLeftCornerLabel.bounds.height / 2)
-            
             let pipString = createPipString(thatFits: pipRect)
-            
             let pipRowSpacing = pipRect.size.height / CGFloat(pipsPerRow.count)
-        
             pipRect.size.height = pipString.size().height
-            print(pipRect.origin.y)
             pipRect.origin.y += (pipRowSpacing - pipRect.size.height) / 2
-            print((pipRowSpacing - pipRect.size.height) / 2)
-            print(pipRect.origin.y)
-            
+
             for pipCount in pipsPerRow {
                 switch pipCount {
                 case 1:
@@ -146,8 +149,6 @@ class KDPlayingCardView: UIView
         
         
     }
-    
-    
 }
 
 

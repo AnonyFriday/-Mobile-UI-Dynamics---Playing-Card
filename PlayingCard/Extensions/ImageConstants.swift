@@ -8,10 +8,9 @@
 import UIKit
 
 enum ImageFromXCAssets {
-    static let cardBackImage    = UIImage(named: "cardback")!
+    static let cardBackImage    = UIImage(named: "cardback", in:Bundle(for: KDPlayingCardView.self.classForCoder()), compatibleWith: UITraitCollection())!
     static var cardFaceUpCardImage : ((String) -> UIImage?) = { imageName in
-        if let image = UIImage(named: imageName) {
-            print("Hello: ", imageName)
+        if let image = UIImage(named: imageName, in: Bundle(for: KDPlayingCardView.self.classForCoder()), compatibleWith: UITraitCollection()) {
             return image
         }
         return nil

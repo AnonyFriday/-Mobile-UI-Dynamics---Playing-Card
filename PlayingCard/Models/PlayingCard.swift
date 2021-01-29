@@ -49,6 +49,18 @@ struct PlayingCard : CustomStringConvertible
                     return "\(pipsCount)"
             }
         }
+        
+        
+        var numericOrder: Int {
+            switch self {
+                case .ace: return 1
+                case .numeric(pipsCount: let pips): return pips
+                case .face(let face) where face == "J": return 11
+                case .face(let face) where face == "Q": return 12
+                case .face(let face) where face == "K": return 13
+                default: return 0
+            }
+        }
     }
     
     var description: String {

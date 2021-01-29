@@ -9,7 +9,6 @@ import UIKit
 
 class KDCornerLabel: UILabel {
 
-    var cornerString: NSAttributedString?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,15 +18,14 @@ class KDCornerLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(string: String, fontSize: CGFloat) {
+    convenience init(attributedString: NSAttributedString) {
         self.init(frame: .zero)
-        cornerString = NSAttributedString.createCenterAttributedString(string, fontSize: fontSize)
+        attributedText = attributedString
         configure()
     }
     
     private func configure() {
         numberOfLines = 0
-        attributedText = cornerString
         sizeToFit()
         adjustsFontForContentSizeCategory = true
     }

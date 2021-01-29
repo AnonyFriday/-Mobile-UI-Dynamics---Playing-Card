@@ -23,6 +23,12 @@
                                     <constraint firstAttribute="width" priority="750" constant="800" id="ZM6-c5-Iqo"/>
                                     <constraint firstAttribute="width" secondItem="f56-it-ofg" secondAttribute="height" multiplier="5:8" id="nJ2-K1-x9i"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isFaceUp" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -36,6 +42,9 @@
                             <constraint firstItem="f56-it-ofg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="wuA-hG-gE6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playingCardView" destination="f56-it-ofg" id="T7f-zD-xeb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
