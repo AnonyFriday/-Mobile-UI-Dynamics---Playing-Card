@@ -7,20 +7,27 @@
 
 import UIKit
 
+
+@IBDesignable
 class KDPlayingCardView: UIView
 {
     
-    private lazy var upperLeftCornerLabel  = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
-    private lazy var lowerRightCornelLabel = KDCornerLabel(string: rankString+"\n"+suit, fontSize: cornerFontSize)
+    private lazy var upperLeftCornerLabel  = KDCornerLabel(attributedString: cornerAttributedString)
+    private lazy var lowerRightCornelLabel = KDCornerLabel(attributedString: cornerAttributedString)
     
-    var rank:       Int     = 3 { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
-    var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var rank:       Int     = 3 { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
     //MARK: Required Initializer
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.addSubViews(views: upperLeftCornerLabel, lowerRightCornelLabel)
     }
     
@@ -69,6 +76,7 @@ class KDPlayingCardView: UIView
 
     //MARK: Configure Upper Left Corner Label
     fileprivate func configureUpperLeftCornerLabel() {
+        upperLeftCornerLabel.attributedText  = cornerAttributedString
         upperLeftCornerLabel.resetToFitFontSizeDynamically()
         upperLeftCornerLabel.frame.origin = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
         upperLeftCornerLabel.isHidden     = !isFaceUp
@@ -76,6 +84,7 @@ class KDPlayingCardView: UIView
     
     //MARK: Configure Lower Right Corner Label
     fileprivate func configureLowerRightCornerLabel() {
+        lowerRightCornelLabel.attributedText    = cornerAttributedString
         lowerRightCornelLabel.resetToFitFontSizeDynamically()
         
         lowerRightCornelLabel.transform    = CGAffineTransform.identity
@@ -174,6 +183,11 @@ extension KDPlayingCardView
         return bounds.size.height * SizeRatio.cornerFontSizeToBoundHeight
     }
     
+    private var cornerAttributedString : NSAttributedString {
+        return NSAttributedString.createCenterAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
+    }
+    
+    
     private var rankString: String {
         switch rank {
             case 1: return "A"
@@ -184,6 +198,7 @@ extension KDPlayingCardView
             default : return "?"
         }
     }
+    
     
 }
 
