@@ -8,24 +8,29 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playingCardView: KDPlayingCardView! {
         didSet {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
+            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCardSwipeGesture))
             swipe.direction = [.left, .right]
             playingCardView.addGestureRecognizer(swipe)
+            
+            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(KDPlayingCardView.adjustFaceCardScale(byHandlingGestureRecoginizedBy:)))
+            playingCardView.addGestureRecognizer(pinch)
         }
     }
     
-    @objc func nextCard() {
+    //MARK: Swipe Gesture, Converting Model to the view
+    @objc func nextCardSwipeGesture() {
         if let card = deck.drawCard() {
             playingCardView.rank    = card.rank.numericOrder
             playingCardView.suit    = card.suit.rawValue
         }
     }
     
+    @IBAction func flipOverCardTapGesture(_ sender: UITapGestureRecognizer) {
+        playingCardView.isFaceUp = !playingCardView.isFaceUp
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 1...10 {
-            print(deck.drawCard()!)
-        }
+        
     }
 }

@@ -10,12 +10,24 @@ import UIKit
 @IBDesignable
 class KDPlayingCardView: UIView
 {
-    
-    
-    
     @IBInspectable var rank:       Int     = 5 { didSet { setNeedsLayout(); setNeedsDisplay() }}
     @IBInspectable var suit:       String  = "♠️" { didSet { setNeedsLayout(); setNeedsDisplay() }}
     @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
+    
+    
+    var faceCardScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet { setNeedsDisplay() } }
+    @objc func adjustFaceCardScale(byHandlingGestureRecoginizedBy recognier: UIPinchGestureRecognizer) {
+        switch recognier.state {
+            case .began :
+                recognier.scale = 1.0
+                fallthrough
+            case .changed, .ended:
+                print("Changed")
+                faceCardScale *= recognier.scale
+                recognier.scale = 1.0 // reset the scale
+            default: break
+        }
+    }
     
     private var centerStringLabel : NSAttributedString {
         return NSAttributedString.createCenterAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
@@ -62,7 +74,7 @@ class KDPlayingCardView: UIView
         switch isFaceUp {
             case true:
                 if let image = ImageFromXCAssets.cardFaceUpCardImage(rankString+suit) {
-                    image.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+                    image.draw(in: bounds.zoom(by: faceCardScale))
                 } else {
                     drawPips()
                 }

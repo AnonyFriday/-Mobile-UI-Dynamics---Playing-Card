@@ -9,7 +9,7 @@ struct PlayingCard : CustomStringConvertible
     
     enum Suit: String, CustomStringConvertible
     {
-        case hearts     = "❤️"
+        case hearts     = "♥️"
         case spades     = "♠️"
         case clubs      = "♣️"
         case diamonds   = "♦️"
