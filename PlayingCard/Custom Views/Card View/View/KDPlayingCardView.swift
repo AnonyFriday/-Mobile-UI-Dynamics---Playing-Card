@@ -11,7 +11,9 @@ import UIKit
 @IBDesignable
 class KDPlayingCardView: UIView
 {
+ 
     
+    //MARK: Properties
     private lazy var upperLeftCornerLabel  = KDCornerLabel(attributedString: cornerAttributedString)
     private lazy var lowerRightCornelLabel = KDCornerLabel(attributedString: cornerAttributedString)
     
@@ -20,24 +22,6 @@ class KDPlayingCardView: UIView
     @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     @IBInspectable var faceCardImageScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet{ setNeedsDisplay()}}
 
-    @objc func flipCard() {
-        isFaceUp = !isFaceUp
-    }
-    
-    @objc func scaleCardImageOfFaceType(byApplyingGestureRecogniter gesture: UIPinchGestureRecognizer?) {
-        if let pinchGesture = gesture {
-            switch pinchGesture.state {
-            case .began:
-                pinchGesture.scale = 1.0
-                fallthrough
-            case .changed, .ended:
-                faceCardImageScale *= pinchGesture.scale
-                pinchGesture.scale = 1.0
-            default: break
-
-            }
-        }
-    }
     
     //MARK: Required Initializer
     required init?(coder: NSCoder) {
@@ -51,9 +35,7 @@ class KDPlayingCardView: UIView
     }
     
     
-    
-    
-    
+
     //MARK: Code does something that the bound changed
     /// setNeedsLayout trigger layoutSubviews
     /// Used to determine the position of my subviews when my view's bound changed

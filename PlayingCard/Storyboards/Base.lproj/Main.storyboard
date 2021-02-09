@@ -8,50 +8,104 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Playing Card Deck Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PlayingCard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PlayingCardDeckScreen" customModule="PlayingCard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="f56-it-ofg" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
-                                <rect key="frame" x="16" y="142.5" width="382" height="611"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="750" constant="800" id="ZM6-c5-Iqo"/>
-                                    <constraint firstAttribute="width" secondItem="f56-it-ofg" secondAttribute="height" multiplier="5:8" id="nJ2-K1-x9i"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEW-x1-QVa" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="46" y="61" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0I-1n-C6k" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="152" y="44" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rank">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isFaceUp" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="cNA-7K-ktA" appends="YES" id="qCB-iR-PSL"/>
-                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Awp-l5-yny" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="98" y="104" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emy-fU-T5D" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="284" y="111" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXh-LN-YRU" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="162" y="242" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBs-7r-B6d" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="46" y="219" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="faceCardImageScale">
+                                        <real key="value" value="-1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oBz-tw-nBK" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="260" y="232" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mZE-2D-s2O" customClass="KDPlayingCardView" customModule="PlayingCard" customModuleProvider="target">
+                                <rect key="frame" x="98" y="334" width="90" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="f56-it-ofg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7Sd-YZ-wUi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f56-it-ofg" secondAttribute="bottom" constant="16" id="8Xj-zp-f7E"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f56-it-ofg" secondAttribute="trailing" constant="16" id="E2i-Sd-Ge3"/>
-                            <constraint firstItem="f56-it-ofg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="I34-9l-fsa"/>
-                            <constraint firstItem="f56-it-ofg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j1C-BL-uOt"/>
-                            <constraint firstItem="f56-it-ofg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="wuA-hG-gE6"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="WDo-5e-UxO" appends="YES" id="FZa-Ch-lDI"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="playingCardView" destination="f56-it-ofg" id="MbH-r5-kbG"/>
+                        <outletCollection property="playingCardViews" destination="emy-fU-T5D" collectionClass="NSMutableArray" id="UeN-tg-GaA"/>
+                        <outletCollection property="playingCardViews" destination="oBz-tw-nBK" collectionClass="NSMutableArray" id="XoV-kE-tvc"/>
+                        <outletCollection property="playingCardViews" destination="l0I-1n-C6k" collectionClass="NSMutableArray" id="rDR-UO-Ngg"/>
+                        <outletCollection property="playingCardViews" destination="Awp-l5-yny" collectionClass="NSMutableArray" id="CVq-00-dsV"/>
+                        <outletCollection property="playingCardViews" destination="gEW-x1-QVa" collectionClass="NSMutableArray" id="YgH-jk-tMc"/>
+                        <outletCollection property="playingCardViews" destination="cXh-LN-YRU" collectionClass="NSMutableArray" id="Nxx-wo-Zva"/>
+                        <outletCollection property="playingCardViews" destination="mZE-2D-s2O" collectionClass="NSMutableArray" id="92u-Ne-VvE"/>
+                        <outletCollection property="playingCardViews" destination="vBs-7r-B6d" collectionClass="NSMutableArray" id="tk1-Fb-Mbj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,6 +120,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
