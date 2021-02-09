@@ -14,9 +14,9 @@
             filePath = "PlayingCard/Custom Views/Card View/View/KDPlayingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "drawPips()"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "configureLowerRightCornerLabel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -108,9 +108,9 @@
             filePath = "PlayingCard/Custom Views/Card View/View/KDPlayingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "draw(_:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "layoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,9 +202,9 @@
             filePath = "PlayingCard/Custom Views/Card View/View/KDPlayingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "configureLowerRightCornerLabel()"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "traitCollectionDidChange(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,10 +218,10 @@
             filePath = "PlayingCard/Custom Views/Card View/View/KDPlayingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "KDPlayingCardView"
-            landmarkType = "3">
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "draw(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

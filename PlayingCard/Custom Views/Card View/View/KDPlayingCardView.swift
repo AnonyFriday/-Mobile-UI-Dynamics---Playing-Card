@@ -31,7 +31,6 @@ class KDPlayingCardView: UIView
                 pinchGesture.scale = 1.0
                 fallthrough
             case .changed, .ended:
-                print("Hello")
                 faceCardImageScale *= pinchGesture.scale
                 pinchGesture.scale = 1.0
             default: break
@@ -79,7 +78,6 @@ class KDPlayingCardView: UIView
         switch isFaceUp {
             case true:
                 if let image = ImageFromXCAssets.cardFaceUpCardImage(rankString+suit) {
-                    print(rankString+suit)
                     image.draw(in: bounds.zoom(by: faceCardImageScale))
                 } else {
                     drawPips()
@@ -102,8 +100,8 @@ class KDPlayingCardView: UIView
     fileprivate func configureUpperLeftCornerLabel() {
         upperLeftCornerLabel.attributedText  = cornerAttributedString
         upperLeftCornerLabel.resetToFitFontSizeDynamically()
-        upperLeftCornerLabel.frame.origin = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
-        upperLeftCornerLabel.isHidden     = !isFaceUp
+        upperLeftCornerLabel.frame.origin   = self.bounds.origin.offSetBy(dx: cornerOffset, dy: cornerOffset)
+        upperLeftCornerLabel.isHidden       = !isFaceUp
     }
     
     //MARK: Configure Lower Right Corner Label
@@ -111,14 +109,14 @@ class KDPlayingCardView: UIView
         lowerRightCornelLabel.attributedText    = cornerAttributedString
         lowerRightCornelLabel.resetToFitFontSizeDynamically()
         
-        lowerRightCornelLabel.transform    = CGAffineTransform.identity
+        lowerRightCornelLabel.transform         = CGAffineTransform.identity
             .translatedBy(x: lowerRightCornelLabel.frame.size.width, y: lowerRightCornelLabel.frame.size.height)
             .rotated(by: CGFloat.pi)
-        lowerRightCornelLabel.frame.origin = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
+        lowerRightCornelLabel.frame.origin      = CGPoint(x: self.bounds.maxX, y: self.bounds.maxY)
             .offSetBy(dx: -cornerOffset, dy: -cornerOffset)
             .offSetBy(dx: -lowerRightCornelLabel.frame.size.width, dy: -lowerRightCornelLabel.frame.size.height)
         
-        lowerRightCornelLabel.isHidden     = !isFaceUp
+        lowerRightCornelLabel.isHidden          = !isFaceUp
     }
 
     
