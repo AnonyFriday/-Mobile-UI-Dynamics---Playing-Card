@@ -61,12 +61,15 @@ class PlayingCardDeckScreen: UIViewController
         switch recognizer.state {
             case .ended:
                 if let chosenCardView = recognizer.view as? KDPlayingCardView, faceUpCardViews.count < 2 {
+                    cardBehavior.removeItem(chosenCardView)
                     
                     UIView.transition(with: chosenCardView, duration: 0.6, options: [.transitionFlipFromLeft]) {
                         chosenCardView.isFaceUp = !chosenCardView.isFaceUp
                     } completion: { [self] (finished) in
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0)
                         {
+                            
+                            //MARK: Match
                             if faceUpCardViewsMatch {
                                 UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.6,
                                                                                delay: 0,
@@ -93,16 +96,23 @@ class PlayingCardDeckScreen: UIViewController
                                     }
                                 }
                                 
+                                
+                            //MARK: Dont't match
                             } else if faceUpCardViews.count == 2
                             {
-                    
                                 faceUpCardViews.forEach { faceUpCard in
                                     UIView.transition(with: faceUpCard, duration: 0.6, options: .transitionFlipFromRight)
                                     {
                                         faceUpCard.isFaceUp = !faceUpCard.isFaceUp
                                     } completion: { (finished) in
-                                        
+                                        cardBehavior.addItem(faceUpCard)
                                     }
+                                }
+                                
+                            //MARK: Reselect the chosen card
+                            } else {
+                                if !chosenCardView.isFaceUp {
+                                    cardBehavior.addItem(chosenCardView)
                                 }
                             }
                         }
