@@ -13,6 +13,9 @@ class PlayingCardDeckScreen: UIViewController
     //MARK: Hook up Gesture Recognizer with the playingCardView
     @IBOutlet private var playingCardViews: [KDPlayingCardView]!
     
+    lazy var animator = UIDynamicAnimator(referenceView: view)
+    lazy var cardBehavior = CardBehavior(in: animator)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,7 @@ class PlayingCardDeckScreen: UIViewController
             playingCardView.rank = playingCard.rank.numericalRank
             playingCardView.suit = playingCard.suit.rawValue
             playingCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(touchCardView(_:))))
+            cardBehavior.addItem(playingCardView)
         }
     }
     
@@ -80,16 +84,18 @@ class PlayingCardDeckScreen: UIViewController
                                         }
                                     } completion: { (finished) in
                                         self.faceUpCardViews.forEach {
-                                            $0.isHidden = true
-                                            $0.transform = .identity
                                             
+                                            // Also inside the superview's list of subviews
+                                            $0.isHidden  = true
+                                            $0.alpha     = 100
+                                            $0.transform = .identity
                                         }
                                     }
                                 }
                                 
                             } else if faceUpCardViews.count == 2
                             {
-                                
+                    
                                 faceUpCardViews.forEach { faceUpCard in
                                     UIView.transition(with: faceUpCard, duration: 0.6, options: .transitionFlipFromRight)
                                     {
@@ -106,6 +112,18 @@ class PlayingCardDeckScreen: UIViewController
         }
     }
     
+}
+
+extension CGFloat {
+    var arc4random: CGFloat {
+        if self > 0 {
+            return CGFloat(arc4random_uniform(UInt32(self)))
+        } else if self < 0 {
+            return -CGFloat(arc4random_uniform(UInt32(-self)))
+        } else {
+            return 0
+        }
+    }
 }
 
 

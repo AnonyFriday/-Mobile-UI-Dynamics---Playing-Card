@@ -19,6 +19,7 @@
 		5C7B924E25C007C200E63DF5 /* NSAttributeString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */; };
 		5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B925125C042D100E63DF5 /* UIView+Ext.swift */; };
 		5C7B926625C0612900E63DF5 /* CGPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */; };
+		5C7C49CD25D35F8B002D0AF2 /* CardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C49CC25D35F8B002D0AF2 /* CardBehavior.swift */; };
 		5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */; };
 		5C83D4D925B70459000FFF41 /* PlayingCardDeckScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* PlayingCardDeckScreen.swift */; };
 		5C9F012A25C1A14D0030E85B /* CGRect+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */; };
@@ -40,6 +41,7 @@
 		5C7B924D25C007C200E63DF5 /* NSAttributeString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributeString+Ext.swift"; sourceTree = "<group>"; };
 		5C7B925125C042D100E63DF5 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Ext.swift"; sourceTree = "<group>"; };
+		5C7C49CC25D35F8B002D0AF2 /* CardBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBehavior.swift; sourceTree = "<group>"; };
 		5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		5C83D4D825B70459000FFF41 /* PlayingCardDeckScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeckScreen.swift; sourceTree = "<group>"; };
 		5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Ext.swift"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				5C83D4D825B70459000FFF41 /* PlayingCardDeckScreen.swift */,
+				5C7C49CC25D35F8B002D0AF2 /* CardBehavior.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */,
 				5CB0293925C2D63800E7F8F5 /* ImageConstants.swift in Sources */,
 				5C7B924125C0034B00E63DF5 /* KDCornerLabel.swift in Sources */,
+				5C7C49CD25D35F8B002D0AF2 /* CardBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
