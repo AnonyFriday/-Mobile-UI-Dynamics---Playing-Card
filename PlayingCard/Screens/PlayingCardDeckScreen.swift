@@ -48,7 +48,9 @@ class PlayingCardDeckScreen: UIViewController
     
     //MARK: Animation
     private var faceUpCardViews: [KDPlayingCardView] {
-        return playingCardViews.filter { $0.isFaceUp && !$0.isHidden}
+        return playingCardViews.filter {
+            $0.isFaceUp && !$0.isHidden && $0.transform != CGAffineTransform.identity.scaledBy(x: 3.0, y: 3.0) && $0.alpha == 1
+        }
     }
     
     private var faceUpCardViewsMatch: Bool {
@@ -57,63 +59,77 @@ class PlayingCardDeckScreen: UIViewController
             faceUpCardViews[0].suit == faceUpCardViews[1].suit
     }
     
+    private var lastChosenCard: KDPlayingCardView?
+    
     @objc func touchCardView(_ recognizer: UITapGestureRecognizer) {
         switch recognizer.state {
             case .ended:
+                
+                //MARK: Working on the card involving in the match
+                /// - Just choose 1 card per round -> faceUpCardViews.count < 2
                 if let chosenCardView = recognizer.view as? KDPlayingCardView, faceUpCardViews.count < 2 {
+                    lastChosenCard     = chosenCardView
                     cardBehavior.removeItem(chosenCardView)
                     
-                    UIView.transition(with: chosenCardView, duration: 0.6, options: [.transitionFlipFromLeft]) {
+                    UIView.transition(with: chosenCardView,
+                                      duration: 3.0,
+                                      options: [.transitionFlipFromLeft]) {
                         chosenCardView.isFaceUp = !chosenCardView.isFaceUp
+                        
                     } completion: { [self] (finished) in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0)
-                        {
-                            
-                            //MARK: Match
-                            if faceUpCardViewsMatch {
+                        
+                        // Recalculate the faceUpCardView
+                        let cardsToAnimate = faceUpCardViews
+                        
+                        print(faceUpCardViews.count)
+                        
+                        //MARK: Match
+                        if faceUpCardViewsMatch {
+                            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.6,
+                                                                           delay: 0,
+                                                                           options: [.curveEaseIn]) {
+                                cardsToAnimate.forEach {
+                                    $0.transform = CGAffineTransform.identity.scaledBy(x: 3, y: 3)
+                                }
+                            } completion: { (finished) in
                                 UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.6,
                                                                                delay: 0,
                                                                                options: [.curveEaseIn]) {
-                                    self.faceUpCardViews.forEach {
-                                        $0.transform = CGAffineTransform.identity.scaledBy(x: 3, y: 3)
+                                    cardsToAnimate.forEach {
+                                        $0.transform = CGAffineTransform.identity.scaledBy(x: 0.1, y: 0.1)
+                                        $0.alpha = 0
                                     }
                                 } completion: { (finished) in
-                                    UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.6,
-                                                                                   delay: 0,
-                                                                                   options: [.curveEaseIn]) {
-                                        self.faceUpCardViews.forEach {
-                                            $0.transform = CGAffineTransform.identity.scaledBy(x: 0.1, y: 0.1)
-                                            $0.alpha = 0
-                                        }
-                                    } completion: { (finished) in
-                                        self.faceUpCardViews.forEach {
-                                            
-                                            // Also inside the superview's list of subviews
-                                            $0.isHidden  = true
-                                            $0.alpha     = 100
-                                            $0.transform = .identity
-                                        }
+                                    cardsToAnimate.forEach {
+                                        
+                                        // Also inside the superview's list of subviews
+                                        $0.isHidden  = true
+                                        $0.alpha     = 100
+                                        $0.transform = .identity
                                     }
                                 }
-                                
-                                
+                            }
+                            
+                            
                             //MARK: Dont't match
-                            } else if faceUpCardViews.count == 2
-                            {
-                                faceUpCardViews.forEach { faceUpCard in
-                                    UIView.transition(with: faceUpCard, duration: 0.6, options: .transitionFlipFromRight)
+                        } else if cardsToAnimate.count == 2
+                        {
+                            if chosenCardView == self.lastChosenCard {
+                                cardsToAnimate.forEach { faceUpCard in
+                                    UIView.transition(with: faceUpCard, duration: 3.0, options: .transitionFlipFromRight)
                                     {
                                         faceUpCard.isFaceUp = !faceUpCard.isFaceUp
                                     } completion: { (finished) in
                                         cardBehavior.addItem(faceUpCard)
                                     }
                                 }
-                                
+                            }
+                            
+                            
                             //MARK: Reselect the chosen card
-                            } else {
-                                if !chosenCardView.isFaceUp {
-                                    cardBehavior.addItem(chosenCardView)
-                                }
+                        } else {
+                            if !chosenCardView.isFaceUp {
+                                cardBehavior.addItem(chosenCardView)
                             }
                         }
                     }
