@@ -4,33 +4,40 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    lazy var deck = PlayingCardDeck()
-    
-    @IBOutlet weak var playingCardView: KDPlayingCardView! {
+    //MARK: Properties
+    private lazy var deck = PlayingCardDeck()
+    @IBOutlet var playingCardDeckViews: [KDPlayingCardView]! {
         didSet {
-            let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCardSwipeGesture))
-            swipe.direction = [.left, .right]
-            playingCardView.addGestureRecognizer(swipe)
-            
-            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(KDPlayingCardView.adjustFaceCardScale(byHandlingGestureRecoginizedBy:)))
-            playingCardView.addGestureRecognizer(pinch)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCard(_:)))
+            for card in playingCardDeckViews {
+                card.addGestureRecognizer(tap)
+            }
         }
     }
     
-    //MARK: Swipe Gesture, Converting Model to the view
-    @objc func nextCardSwipeGesture() {
-        if let card = deck.drawCard() {
-            playingCardView.rank    = card.rank.numericOrder
-            playingCardView.suit    = card.suit.rawValue
-        }
-    }
     
-    @IBAction func flipOverCardTapGesture(_ sender: UITapGestureRecognizer) {
-        playingCardView.isFaceUp = !playingCardView.isFaceUp
-    }
-    
+    //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        syncModelToView()
+    }
+    
+    
+    //MARK: Synchronzie data from Model to View
+    private func syncModelToView() {
+        var index = 0;
+        var playingCardDeck = deck.deckCards!
+        while index < playingCardDeckViews.count {
+            playingCardDeckViews[index].suit     = playingCardDeck[index].suit.rawValue
+            playingCardDeckViews[index].rank     = playingCardDeck[index].rank.numericOrder
+            playingCardDeckViews[index].isFaceUp = false
+            
+            //Attach Tap Gesture
+            index += 1
+        }
+    }
+    
+    @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
+        print("Hello")
     }
 }

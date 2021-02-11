@@ -16,18 +16,6 @@ class KDPlayingCardView: UIView
     
     
     var faceCardScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet { setNeedsDisplay() } }
-    @objc func adjustFaceCardScale(byHandlingGestureRecoginizedBy recognier: UIPinchGestureRecognizer) {
-        switch recognier.state {
-            case .began :
-                recognier.scale = 1.0
-                fallthrough
-            case .changed, .ended:
-                print("Changed")
-                faceCardScale *= recognier.scale
-                recognier.scale = 1.0 // reset the scale
-            default: break
-        }
-    }
     
     private var centerStringLabel : NSAttributedString {
         return NSAttributedString.createCenterAttributedString(rankString+"\n"+suit, fontSize: cornerFontSize)
