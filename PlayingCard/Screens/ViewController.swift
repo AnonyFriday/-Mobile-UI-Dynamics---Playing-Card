@@ -5,15 +5,18 @@ import UIKit
 class ViewController: UIViewController {
     
     //MARK: Properties
-    private lazy var deck = PlayingCardDeck()
+    private lazy var gameCard = GameCard()
     @IBOutlet var playingCardDeckViews: [KDPlayingCardView]! {
         didSet {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCard(_:)))
             for card in playingCardDeckViews {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(didTapCard(_:)))
                 card.addGestureRecognizer(tap)
             }
         }
     }
+    
+    //MARK: Gesture Animator
+    private lazy var animator = UIDynamicAnimator(referenceView: self.view)
     
     
     //MARK: View Did Load
@@ -25,19 +28,27 @@ class ViewController: UIViewController {
     
     //MARK: Synchronzie data from Model to View
     private func syncModelToView() {
-        var index = 0;
-        var playingCardDeck = deck.deckCards!
-        while index < playingCardDeckViews.count {
-            playingCardDeckViews[index].suit     = playingCardDeck[index].suit.rawValue
-            playingCardDeckViews[index].rank     = playingCardDeck[index].rank.numericOrder
+        var index = 0
+        while index < gameCard.displayedCards.count {
+            playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
+            playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
             playingCardDeckViews[index].isFaceUp = false
-            
+
             //Attach Tap Gesture
             index += 1
         }
     }
     
+    
+    
+    
+    //MARK: Methods
     @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
-        print("Hello")
+        switch gestureRecognier.state {
+          
+              
+                
+            default: break;
+        }
     }
 }

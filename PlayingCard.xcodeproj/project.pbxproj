@@ -24,6 +24,7 @@
 		5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* ViewController.swift */; };
 		5C9F012A25C1A14D0030E85B /* CGRect+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */; };
 		5CB0293925C2D63800E7F8F5 /* ImageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0293825C2D63800E7F8F5 /* ImageConstants.swift */; };
+		5CF0978C25D6F2B7007C6AD5 /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0978B25D6F2B7007C6AD5 /* GameCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		5C83D4D825B70459000FFF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Ext.swift"; sourceTree = "<group>"; };
 		5CB0293825C2D63800E7F8F5 /* ImageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstants.swift; sourceTree = "<group>"; };
+		5CF0978B25D6F2B7007C6AD5 /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */,
 				5C31992625B5C08000EB4EC1 /* PlayingCard.swift */,
+				5CF0978B25D6F2B7007C6AD5 /* GameCard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				5C9F012A25C1A14D0030E85B /* CGRect+Ext.swift in Sources */,
 				5C31992725B5C08000EB4EC1 /* PlayingCard.swift in Sources */,
 				5C31991425B5C07300EB4EC1 /* SceneDelegate.swift in Sources */,
+				5CF0978C25D6F2B7007C6AD5 /* GameCard.swift in Sources */,
 				5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */,
 				5CB0293925C2D63800E7F8F5 /* ImageConstants.swift in Sources */,
 				5C7D9FC625D5C79300649FDF /* CGFloat+Ext.swift in Sources */,

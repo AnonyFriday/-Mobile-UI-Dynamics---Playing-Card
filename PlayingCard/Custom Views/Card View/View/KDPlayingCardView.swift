@@ -185,7 +185,6 @@ extension KDPlayingCardView
             default : return "?"
         }
     }
-    
 }
 
 
