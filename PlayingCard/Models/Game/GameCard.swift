@@ -19,12 +19,13 @@ class GameCard
     init() {
         setDisplayCards()
         shuffleCardInDeck()
+        print(displayedCards.description)
+        print(cardDeck.totalCards.count)
     }
     
-    func selectCard(card: inout PlayingCard, completed: @escaping(State) -> Void) {
-        card.isFaceUp = !card.isFaceUp
-        print(card)
-    }
+//    func selectCard(card: inout PlayingCard, completed: @escaping(State) -> Void) {
+//        
+//    }
     
     var isPairCard : Bool
     {
@@ -39,19 +40,26 @@ class GameCard
             let matchedCard = cardDeck.drawRandomCard()!
             displayedCards += [matchedCard, matchedCard]
         }
+        
+        var newDeckCard = [PlayingCard]()
+        for _ in 0..<displayedCards.count {
+            let card = displayedCards.remove(at: displayedCards.count.arc4random)
+            newDeckCard.append(card)
+        }
+        displayedCards = newDeckCard
     }
     
     func shuffleCardInDeck(){
         guard !displayedCards.isEmpty else { return }
-        
         let removedCardFromDisplayedCard = displayedCards
         
         displayedCards.removeAll()
-        
+
         /// Handle the case of non-card in the DisplayCard
         for card in removedCardFromDisplayedCard {
             cardDeck.totalCards.append(card)
         }
+
         setDisplayCards(withQuantity: removedCardFromDisplayedCard.count)
     }
 }

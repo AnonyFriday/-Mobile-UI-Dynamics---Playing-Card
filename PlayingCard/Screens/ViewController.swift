@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     private func syncModelToView() {
         var index = 0
         while index < gameCard.displayedCards.count {
+            
             playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
             playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
             playingCardDeckViews[index].isFaceUp = gameCard.displayedCards[index].isFaceUp
@@ -43,6 +44,9 @@ class ViewController: UIViewController {
     
     
     
+    private
+    
+
     
     //MARK: Methods
     @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
@@ -52,16 +56,7 @@ class ViewController: UIViewController {
                    let index = playingCardDeckViews.firstIndex(of: playingCardView)
                 {
                     var card  = gameCard.displayedCards[index]
-                    gameCard.selectCard(card: &card) { (state) in
-                        switch state {
-                            case .matched:
-                                break
-                            case .alreadyExist:
-                                break
-                            case .unMatched:
-                                break
-                        }
-                    }
+                    
                 }
                 
             default: break;
