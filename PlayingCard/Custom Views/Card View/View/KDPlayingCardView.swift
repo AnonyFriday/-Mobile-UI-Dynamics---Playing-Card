@@ -94,7 +94,6 @@ class KDPlayingCardView: UIView
         lowerRightCornelLabel.attributedText = centerStringLabel
         lowerRightCornelLabel.resetToFitFontSizeDynamically()
         
-        print(centerStringLabel)
         lowerRightCornelLabel.transform    = CGAffineTransform.identity
             .translatedBy(x: lowerRightCornelLabel.frame.size.width, y: lowerRightCornelLabel.frame.size.height)
             .rotated(by: CGFloat.pi)

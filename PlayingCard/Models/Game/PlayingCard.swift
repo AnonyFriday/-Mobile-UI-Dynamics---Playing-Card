@@ -1,13 +1,17 @@
 
 import Foundation
 
-struct PlayingCard : CustomStringConvertible
+struct PlayingCard : CustomStringConvertible, Hashable
 {
+    static func == (lhs: PlayingCard, rhs: PlayingCard) -> Bool {
+        return lhs.rank == lhs.rank && lhs.suit == rhs.suit
+    }
+    
     var rank: Rank
     var suit: Suit
+    var isFaceUp: Bool = false
     
-    
-    enum Suit: String, CustomStringConvertible
+    enum Suit: String, CustomStringConvertible, Hashable
     {
         case hearts     = "♥️"
         case spades     = "♠️"
@@ -24,7 +28,7 @@ struct PlayingCard : CustomStringConvertible
     }
     
     
-    enum Rank: CustomStringConvertible
+    enum Rank: CustomStringConvertible, Hashable
     {
         case ace
         case face(String)
@@ -64,7 +68,7 @@ struct PlayingCard : CustomStringConvertible
     }
     
     var description: String {
-        return "\(rank) \(suit)"
+        return "\(rank) \(suit) \(isFaceUp)"
     }
 
 }

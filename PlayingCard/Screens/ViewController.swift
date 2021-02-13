@@ -20,8 +20,7 @@ class ViewController: UIViewController {
     //MARK: Gesture Animator
     private lazy var animator = UIDynamicAnimator(referenceView: self.view)
     
-    
-    
+
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
         while index < gameCard.displayedCards.count {
             playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
             playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
-            playingCardDeckViews[index].isFaceUp = true
+            playingCardDeckViews[index].isFaceUp = gameCard.displayedCards[index].isFaceUp
 
             //Attach Tap Gesture
             index += 1
@@ -52,13 +51,18 @@ class ViewController: UIViewController {
                 if let playingCardView = gestureRecognier.view as? KDPlayingCardView,
                    let index = playingCardDeckViews.firstIndex(of: playingCardView)
                 {
-                    let card  = gameCard.displayedCards[index]
-                    gameCard.selectedCards.append(card)
-                    
-
+                    var card  = gameCard.displayedCards[index]
+                    gameCard.selectCard(card: &card) { (state) in
+                        switch state {
+                            case .matched:
+                                break
+                            case .alreadyExist:
+                                break
+                            case .unMatched:
+                                break
+                        }
+                    }
                 }
-                
-                
                 
             default: break;
         }

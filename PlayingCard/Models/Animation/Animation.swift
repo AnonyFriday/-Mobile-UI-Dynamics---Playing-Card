@@ -22,5 +22,6 @@ extension Animation {
                          options: [],
                          dampRatio: 0) {  $0.alpha = 0.01 }
     }
+    
 }
 
