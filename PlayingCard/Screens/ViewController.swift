@@ -60,41 +60,42 @@ class ViewController: UIViewController {
         faceUpCardViews[0].suit == faceUpCardViews[1].suit
     }
     
+    private var lastChosenCard: KDPlayingCardView?
+    
     //MARK: Methods
     @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
         switch gestureRecognier.state {
             case .ended:
-                print(faceUpCardViews.description)
                 if let playingCardView = gestureRecognier.view as? KDPlayingCardView, faceUpCardViews.count < 2
                 {
                     //MARK: -- Flip the Card
-                    UIView.transition(with: playingCardView, duration: 0.6, options: .transitionFlipFromRight) {
+                    UIView.transition(with: playingCardView, duration: 1, options: .transitionFlipFromRight) {
                         playingCardView.isFaceUp = !playingCardView.isFaceUp
                     } completion: { [self] (finished) in
                         let cardsToAnimate = self.faceUpCardViews
                         
                         // Matched
                         if self.faceUpCardViewsMatch {
-                            for cardView in cardsToAnimate {
-                                cardView.animate([.zoom(duration: 0.6, sx: 3.0, sy: 3.0)])
-                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    cardView.animate(inParallel:
-                                                        [.zoom(duration: 0.6, sx: 0.1, sy: 0.1),
-                                                         .fadeOut(duration: 0.6)])
-                                }
-                               
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                                    cardView.isHidden  = true
-                                    cardView.alpha     = 1
-                                    cardView.transform = .identity
-                                }
-                            }
+//                            for cardView in cardsToAnimate {
+//                                cardView.animate([.zoom(duration: 0.6, sx: 3.0, sy: 3.0)])
+//                                
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//                                    cardView.animate(inParallel:
+//                                                        [.zoom(duration: 0.6, sx: 0.1, sy: 0.1),
+//                                                         .fadeOut(duration: 0.6)])
+//                                }
+//                               
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                                    cardView.isHidden  = true
+//                                    cardView.alpha     = 1
+//                                    cardView.transform = .identity
+//                                }
+//                            }
                             
                             // Unmatched
                         } else if cardsToAnimate.count == 2 {
                             for cardView in cardsToAnimate {
-                                UIView.transition(with: cardView, duration: 0.6, options: .transitionFlipFromLeft) {
+                                UIView.transition(with: cardView, duration: 1, options: .transitionFlipFromLeft) {
                                     cardView.isFaceUp = false
                                 } completion: { (finished) in
                                     
