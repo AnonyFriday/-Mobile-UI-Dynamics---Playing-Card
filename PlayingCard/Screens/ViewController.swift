@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     
     private var faceUpCardViews: [KDPlayingCardView] {
-        return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden}
+        return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden }
     }
     
     private var faceUpCardViewsMatch: Bool {
@@ -71,36 +71,41 @@ class ViewController: UIViewController {
                     //MARK: -- Flip the Card
                     UIView.transition(with: playingCardView, duration: 1, options: .transitionFlipFromRight) {
                         playingCardView.isFaceUp = !playingCardView.isFaceUp
+                        
                     } completion: { [self] (finished) in
                         let cardsToAnimate = self.faceUpCardViews
                         
                         // Matched
                         if self.faceUpCardViewsMatch {
-//                            for cardView in cardsToAnimate {
-//                                cardView.animate([.zoom(duration: 0.6, sx: 3.0, sy: 3.0)])
-//                                
-//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//                                    cardView.animate(inParallel:
-//                                                        [.zoom(duration: 0.6, sx: 0.1, sy: 0.1),
-//                                                         .fadeOut(duration: 0.6)])
-//                                }
-//                               
-//                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                                    cardView.isHidden  = true
-//                                    cardView.alpha     = 1
-//                                    cardView.transform = .identity
-//                                }
-//                            }
-                            
+                            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2, delay: 0.2, options: .curveEaseInOut) {
+                                for cardView in cardsToAnimate {
+                                    cardView.transform = CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0)
+                                }
+                            } completion: { (finished) in
+                                
+                                UIView.animate(withDuration: 0.75) {
+                                    for cardView in cardsToAnimate {
+                                        cardView.transform = CGAffineTransform.identity.scaledBy(x: 0.01, y: 0.01)
+                                        cardView.alpha     = 0.0
+                                    }
+                                } completion: { (finished) in
+                                    
+                                    for cardView in cardsToAnimate {
+                                        cardView.isHidden = true
+                                        cardView.alpha    = 1.0
+                                        cardView.transform = .identity
+                                    }
+                                }
+                            }
+
                             // Unmatched
                         } else if cardsToAnimate.count == 2 {
                             for cardView in cardsToAnimate {
-                                UIView.transition(with: cardView, duration: 1, options: .transitionFlipFromLeft) {
+                                UIView.transition(with: cardView, duration: 2, options: .transitionFlipFromLeft) {
                                     cardView.isFaceUp = false
                                 } completion: { (finished) in
                                     
                                 }
-
                             }
                         }
                         

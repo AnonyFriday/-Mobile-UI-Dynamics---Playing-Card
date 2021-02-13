@@ -78,10 +78,153 @@
             filePath = "PlayingCard/Screens/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "didTapCard(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1CA4C92-64BD-4238-B52F-32C0EE17F0FD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayingCard/Screens/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "didTapCard(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B1CA4C92-64BD-4238-B52F-32C0EE17F0FD - ac95cc552e55f9d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIViewAnimatingPosition) -&gt; () in closure #2 (Swift.Bool) -&gt; () in PlayingCard.ViewController.(didTapCard in _EA47B92DE7B3E6CB8298D172F7E28CB2)(__C.UIGestureRecognizer) -&gt; ()"
+                  moduleName = "PlayingCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Stanford%20University/Projects/PlayingCard/PlayingCard/Screens/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  uuid = "B1CA4C92-64BD-4238-B52F-32C0EE17F0FD - 31d99ce95254f54a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (__C.UIViewAnimatingPosition) -&gt; () in closure #2 (Swift.Bool) -&gt; () in PlayingCard.ViewController.(didTapCard in _EA47B92DE7B3E6CB8298D172F7E28CB2)(__C.UIGestureRecognizer) -&gt; ()"
+                  moduleName = "PlayingCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Stanford%20University/Projects/PlayingCard/PlayingCard/Screens/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0353BC7E-7BE4-47DA-8EC9-C7948163ABE3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayingCard/Screens/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "didTapCard(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "391326B6-0A9E-43A8-A53C-5283CD0DB8B9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayingCard/Screens/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "didTapCard(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C8A78216-0D86-4CD8-B013-AE952BD610AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlayingCard/Screens/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "didTapCard(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C8A78216-0D86-4CD8-B013-AE952BD610AE - 69efc2eb3d51f941"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in PlayingCard.ViewController.(didTapCard in _EA47B92DE7B3E6CB8298D172F7E28CB2)(__C.UIGestureRecognizer) -&gt; ()"
+                  moduleName = "PlayingCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Stanford%20University/Projects/PlayingCard/PlayingCard/Screens/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "514">
+               </Location>
+               <Location
+                  uuid = "C8A78216-0D86-4CD8-B013-AE952BD610AE - aed3c57f08d5c5b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool) -&gt; () in PlayingCard.ViewController.(didTapCard in _EA47B92DE7B3E6CB8298D172F7E28CB2)(__C.UIGestureRecognizer) -&gt; ()"
+                  moduleName = "PlayingCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Stanford%20University/Projects/PlayingCard/PlayingCard/Screens/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "316">
+               </Location>
+               <Location
+                  uuid = "C8A78216-0D86-4CD8-B013-AE952BD610AE - ac95cc552e55f977"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIViewAnimatingPosition) -&gt; () in closure #2 (Swift.Bool) -&gt; () in PlayingCard.ViewController.(didTapCard in _EA47B92DE7B3E6CB8298D172F7E28CB2)(__C.UIGestureRecognizer) -&gt; ()"
+                  moduleName = "PlayingCard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/duyvukim/Desktop/Stanford%20University/Projects/PlayingCard/PlayingCard/Screens/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
