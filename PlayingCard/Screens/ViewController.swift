@@ -4,6 +4,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    enum State {
+        case matched, unmatched, alreadyExist
+    }
+    
+    
+    
     //MARK: Properties
     private lazy var gameCard = GameCard()
     @IBOutlet var playingCardDeckViews: [KDPlayingCardView]! {
@@ -44,18 +50,66 @@ class ViewController: UIViewController {
     
     
     
-    private
+    private var faceUpCardViews: [KDPlayingCardView] {
+        return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden}
+    }
     
-
+    private var faceUpCardViewsMatch: Bool {
+        return faceUpCardViews.count == 2 &&
+        faceUpCardViews[0].rank == faceUpCardViews[1].rank &&
+        faceUpCardViews[0].suit == faceUpCardViews[1].suit
+    }
     
     //MARK: Methods
     @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
         switch gestureRecognier.state {
             case .ended:
-                if let playingCardView = gestureRecognier.view as? KDPlayingCardView,
-                   let index = playingCardDeckViews.firstIndex(of: playingCardView)
+                print(faceUpCardViews.description)
+                if let playingCardView = gestureRecognier.view as? KDPlayingCardView, faceUpCardViews.count < 2
                 {
-                    var card  = gameCard.displayedCards[index]
+                    //MARK: -- Flip the Card
+                    UIView.transition(with: playingCardView, duration: 0.6, options: .transitionFlipFromRight) {
+                        playingCardView.isFaceUp = !playingCardView.isFaceUp
+                    } completion: { [self] (finished) in
+                        let cardsToAnimate = self.faceUpCardViews
+                        
+                        // Matched
+                        if self.faceUpCardViewsMatch {
+                            for cardView in cardsToAnimate {
+                                cardView.animate([.zoom(duration: 0.6, sx: 3.0, sy: 3.0)])
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    cardView.animate(inParallel:
+                                                        [.zoom(duration: 0.6, sx: 0.1, sy: 0.1),
+                                                         .fadeOut(duration: 0.6)])
+                                }
+                               
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                                    cardView.isHidden  = true
+                                    cardView.alpha     = 1
+                                    cardView.transform = .identity
+                                }
+                            }
+                            
+                            // Unmatched
+                        } else if cardsToAnimate.count == 2 {
+                            for cardView in cardsToAnimate {
+                                UIView.transition(with: cardView, duration: 0.6, options: .transitionFlipFromLeft) {
+                                    cardView.isFaceUp = false
+                                } completion: { (finished) in
+                                    
+                                }
+
+                            }
+                        }
+                        
+                        // Already exist
+                        else {
+                            
+                        }
+                        
+                    }
+
                     
                 }
                 

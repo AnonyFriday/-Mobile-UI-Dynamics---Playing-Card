@@ -15,6 +15,11 @@ class KDPlayingCardView: UIView
     @IBInspectable var isFaceUp:   Bool    = true { didSet { setNeedsLayout(); setNeedsDisplay() }}
     
     
+    static func == (lhs: KDPlayingCardView, rhs: KDPlayingCardView) -> Bool {
+        return lhs.rank == rhs.rank && lhs.suit == rhs.suit
+    }
+    
+    
     var faceCardScale: CGFloat = SizeRatio.faceCardImageSizeToBoundsSize { didSet { setNeedsDisplay() } }
     
     private var centerStringLabel : NSAttributedString {

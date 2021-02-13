@@ -16,6 +16,7 @@ extension UIView {
 }
 
 extension UIView {
+    // Sequencial Animation
     func animate(_ animations: [Animation]) {
         guard !animations.isEmpty else { return }
         
@@ -29,6 +30,16 @@ extension UIView {
                        animations: { firstAnimation.closure(self) },
                        completion: { _ in self.animate(arrAnimations) }
         )
+    }
+    
+    
+    // Parallel Animation
+    func animate(inParallel animations: [Animation]) {
+        for animation in animations {
+            UIView.animate(withDuration: animation.duration, delay: animation.delay, options: animation.options) {
+                animation.closure(self)
+            }
+        }
     }
     
 }
