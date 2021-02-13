@@ -15,8 +15,9 @@ class GameCard
     
     
     func setDisplayCards(withQuantity quantity: Int = 12) {
-        for _ in 0..<quantity {
-            displayedCards.append(cardDeck.drawRandomCard()!)
+        for _ in 0..<((quantity + 1) / 2) {
+            let matchedCard = cardDeck.drawRandomCard()!
+            displayedCards += [matchedCard, matchedCard]
         }
     }
     

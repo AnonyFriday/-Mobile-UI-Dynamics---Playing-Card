@@ -15,4 +15,23 @@ extension UIView {
     }
 }
 
+extension UIView {
+    func animate(_ animations: [Animation]) {
+        guard !animations.isEmpty else { return }
+        
+        // remove the first animation
+        var arrAnimations = animations
+        let firstAnimation = arrAnimations.removeFirst()
+        
+        UIView.animate(withDuration: firstAnimation.duration,
+                       delay: firstAnimation.delay,
+                       options: firstAnimation.options,
+                       animations: { firstAnimation.closure(self) },
+                       completion: { _ in self.animate(arrAnimations) }
+        )
+    }
+    
+}
+
+
 

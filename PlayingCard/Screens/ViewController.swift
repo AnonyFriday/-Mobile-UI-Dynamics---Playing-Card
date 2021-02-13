@@ -15,8 +15,11 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    
     //MARK: Gesture Animator
     private lazy var animator = UIDynamicAnimator(referenceView: self.view)
+    
     
     
     //MARK: View Did Load
@@ -32,7 +35,7 @@ class ViewController: UIViewController {
         while index < gameCard.displayedCards.count {
             playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
             playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
-            playingCardDeckViews[index].isFaceUp = false
+            playingCardDeckViews[index].isFaceUp = true
 
             //Attach Tap Gesture
             index += 1
@@ -45,8 +48,17 @@ class ViewController: UIViewController {
     //MARK: Methods
     @objc private func didTapCard(_ gestureRecognier: UIGestureRecognizer) {
         switch gestureRecognier.state {
-          
-              
+            case .ended:
+                if let playingCardView = gestureRecognier.view as? KDPlayingCardView,
+                   let index = playingCardDeckViews.firstIndex(of: playingCardView)
+                {
+                    let card  = gameCard.displayedCards[index]
+                    gameCard.selectedCards.append(card)
+                    
+
+                }
+                
+                
                 
             default: break;
         }
