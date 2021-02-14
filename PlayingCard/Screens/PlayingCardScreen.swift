@@ -2,12 +2,11 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class PlayingCardScreen: UIViewController {
     
-    enum State {
-        case matched, unmatched, alreadyExist
-    }
-    
+    //MARK: Dynamic Animator
+    private lazy var animator = UIDynamicAnimator(referenceView: view)
+    private lazy var compositesBehavior = DynamicAnimator(animator: animator)
     
     
     //MARK: Properties
@@ -23,13 +22,13 @@ class ViewController: UIViewController {
     
     
     
-    //MARK: Gesture Animator
-    private lazy var animator = UIDynamicAnimator(referenceView: self.view)
+    
     
 
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.view.description)
         syncModelToView()
     }
     
@@ -42,7 +41,7 @@ class ViewController: UIViewController {
             playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
             playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
             playingCardDeckViews[index].isFaceUp = gameCard.displayedCards[index].isFaceUp
-
+            compositesBehavior.addItem(item: playingCardDeckViews[index])
             //Attach Tap Gesture
             index += 1
         }
@@ -51,7 +50,7 @@ class ViewController: UIViewController {
     
     
     private var faceUpCardViews: [KDPlayingCardView] {
-        return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden }
+        return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden && $0.transform != CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0) && $0.alpha == 1}
     }
     
     private var faceUpCardViewsMatch: Bool {
@@ -109,7 +108,7 @@ class ViewController: UIViewController {
                             }
                         }
                         
-                        // Already exist
+                        
                         else {
                             
                         }

@@ -22,7 +22,8 @@
 		5C7B926625C0612900E63DF5 /* CGPoint+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */; };
 		5C7D9FC625D5C79300649FDF /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7D9FC525D5C79300649FDF /* CGFloat+Ext.swift */; };
 		5C83D4D525B6FEAD000FFF41 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */; };
-		5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* ViewController.swift */; };
+		5C83D4D925B70459000FFF41 /* PlayingCardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D4D825B70459000FFF41 /* PlayingCardScreen.swift */; };
+		5C8D919625D8D46D008DF254 /* DynamicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D919525D8D46D008DF254 /* DynamicAnimator.swift */; };
 		5C9F012A25C1A14D0030E85B /* CGRect+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */; };
 		5CB0293925C2D63800E7F8F5 /* ImageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0293825C2D63800E7F8F5 /* ImageConstants.swift */; };
 		5CF0978C25D6F2B7007C6AD5 /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0978B25D6F2B7007C6AD5 /* GameCard.swift */; };
@@ -46,7 +47,8 @@
 		5C7B926525C0612900E63DF5 /* CGPoint+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Ext.swift"; sourceTree = "<group>"; };
 		5C7D9FC525D5C79300649FDF /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		5C83D4D425B6FEAD000FFF41 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
-		5C83D4D825B70459000FFF41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C83D4D825B70459000FFF41 /* PlayingCardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardScreen.swift; sourceTree = "<group>"; };
+		5C8D919525D8D46D008DF254 /* DynamicAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicAnimator.swift; sourceTree = "<group>"; };
 		5C9F012925C1A14D0030E85B /* CGRect+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Ext.swift"; sourceTree = "<group>"; };
 		5CB0293825C2D63800E7F8F5 /* ImageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstants.swift; sourceTree = "<group>"; };
 		5CF0978B25D6F2B7007C6AD5 /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				5C2320FE25D6FEF90050E6C3 /* Animation.swift */,
+				5C8D919525D8D46D008DF254 /* DynamicAnimator.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -148,7 +151,7 @@
 		5C7B923425BFFE9300E63DF5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				5C83D4D825B70459000FFF41 /* ViewController.swift */,
+				5C83D4D825B70459000FFF41 /* PlayingCardScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -304,7 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C83D4D925B70459000FFF41 /* ViewController.swift in Sources */,
+				5C83D4D925B70459000FFF41 /* PlayingCardScreen.swift in Sources */,
 				5C7B923925BFFECC00E63DF5 /* KDPlayingCardView.swift in Sources */,
 				5C7B926625C0612900E63DF5 /* CGPoint+Ext.swift in Sources */,
 				5C7B925225C042D100E63DF5 /* UIView+Ext.swift in Sources */,
@@ -314,6 +317,7 @@
 				5C9F012A25C1A14D0030E85B /* CGRect+Ext.swift in Sources */,
 				5C31992725B5C08000EB4EC1 /* PlayingCard.swift in Sources */,
 				5C31991425B5C07300EB4EC1 /* SceneDelegate.swift in Sources */,
+				5C8D919625D8D46D008DF254 /* DynamicAnimator.swift in Sources */,
 				5C2320FF25D6FEF90050E6C3 /* Animation.swift in Sources */,
 				5CF0978C25D6F2B7007C6AD5 /* GameCard.swift in Sources */,
 				5C7B921E25BF9F0C00E63DF5 /* Int+Ext.swift in Sources */,

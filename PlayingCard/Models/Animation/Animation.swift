@@ -1,9 +1,4 @@
-//
-//  Animation.swift
-//  PlayingCard
-//
-//  Created by Vu Kim Duy on 13/2/21.
-//
+
 
 import UIKit
 
