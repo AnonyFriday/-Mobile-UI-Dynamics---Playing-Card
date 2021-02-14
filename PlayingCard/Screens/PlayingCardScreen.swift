@@ -2,12 +2,13 @@
 import UIKit
 
 
-class PlayingCardScreen: UIViewController {
+class PlayingCardScreen: UIViewController
+{
     
     //MARK: Dynamic Animator
     private lazy var animator = UIDynamicAnimator(referenceView: view)
     private lazy var compositesBehavior = DynamicAnimator(animator: animator)
-    
+ 
     
     //MARK: Properties
     private lazy var gameCard = GameCard()
@@ -21,14 +22,9 @@ class PlayingCardScreen: UIViewController {
     }
     
     
-    
-    
-    
-
     //MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.view.description)
         syncModelToView()
     }
     
@@ -41,6 +37,7 @@ class PlayingCardScreen: UIViewController {
             playingCardDeckViews[index].suit     = gameCard.displayedCards[index].suit.rawValue
             playingCardDeckViews[index].rank     = gameCard.displayedCards[index].rank.numericOrder
             playingCardDeckViews[index].isFaceUp = gameCard.displayedCards[index].isFaceUp
+            
             compositesBehavior.addItem(item: playingCardDeckViews[index])
             //Attach Tap Gesture
             index += 1
@@ -48,16 +45,17 @@ class PlayingCardScreen: UIViewController {
     }
     
     
-    
     private var faceUpCardViews: [KDPlayingCardView] {
         return playingCardDeckViews.filter { $0.isFaceUp && !$0.isHidden && $0.transform != CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0) && $0.alpha == 1}
     }
+    
     
     private var faceUpCardViewsMatch: Bool {
         return faceUpCardViews.count == 2 &&
         faceUpCardViews[0].rank == faceUpCardViews[1].rank &&
         faceUpCardViews[0].suit == faceUpCardViews[1].suit
     }
+    
     
     private var lastChosenCard: KDPlayingCardView?
     
@@ -67,8 +65,10 @@ class PlayingCardScreen: UIViewController {
             case .ended:
                 if let playingCardView = gestureRecognier.view as? KDPlayingCardView, faceUpCardViews.count < 2
                 {
+                    compositesBehavior.removeItem(item: playingCardView)
+                    
                     //MARK: -- Flip the Card
-                    UIView.transition(with: playingCardView, duration: 1, options: .transitionFlipFromRight) {
+                    UIView.transition(with: playingCardView, duration: 2, options: .transitionFlipFromRight) {
                         playingCardView.isFaceUp = !playingCardView.isFaceUp
                         
                     } completion: { [self] (finished) in
@@ -76,7 +76,7 @@ class PlayingCardScreen: UIViewController {
                         
                         // Matched
                         if self.faceUpCardViewsMatch {
-                            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 2, delay: 0.2, options: .curveEaseInOut) {
+                            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.2, options: .curveEaseInOut) {
                                 for cardView in cardsToAnimate {
                                     cardView.transform = CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0)
                                 }
@@ -100,17 +100,19 @@ class PlayingCardScreen: UIViewController {
                             // Unmatched
                         } else if cardsToAnimate.count == 2 {
                             for cardView in cardsToAnimate {
-                                UIView.transition(with: cardView, duration: 2, options: .transitionFlipFromLeft) {
+                                UIView.transition(with: cardView, duration: 0.75, options: .transitionFlipFromLeft) {
                                     cardView.isFaceUp = false
                                 } completion: { (finished) in
-                                    
+                                    compositesBehavior.addItem(item: cardView)
                                 }
                             }
                         }
                         
-                        
+                        // If exist
                         else {
-                            
+                            if !playingCardView.isFaceUp {
+                                compositesBehavior.addItem(item: playingCardView)
+                            }
                         }
                         
                     }

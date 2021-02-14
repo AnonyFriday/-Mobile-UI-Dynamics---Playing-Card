@@ -5,13 +5,13 @@ import UIKit
 class DynamicAnimator: UIDynamicBehavior
 {
     
-    //Initialize those Behavior
-    private lazy var gravityBehavior : UIGravityBehavior! = {
-        var gravity = UIGravityBehavior()
-        gravity.angle = CGFloat.pi / 2
-        gravity.magnitude = CGFloat.pi
-        return gravity
-    }()
+    //MARK: Initialize those Behavior
+//    private lazy var gravityBehavior : UIGravityBehavior! = {
+//        var gravity = UIGravityBehavior()
+//        gravity.angle = CGFloat.pi / 2
+//        gravity.magnitude = CGFloat.pi
+//        return gravity
+//    }()
     
     
     private lazy var collisionBehavior : UICollisionBehavior! = {
@@ -20,6 +20,7 @@ class DynamicAnimator: UIDynamicBehavior
         collision.collisionMode = .everything
         return collision
     }()
+    
     
     private lazy var itemBehavior      : UIDynamicItemBehavior! = {
         var itemBehavior = UIDynamicItemBehavior()
@@ -30,25 +31,39 @@ class DynamicAnimator: UIDynamicBehavior
     }()
     
     
-    func addItem(item: UIDynamicItem) {
-        gravityBehavior.addItem(item)
-        collisionBehavior.addItem(item)
-        collisionBehavior.addItem(item)
+    func push(_ item: UIDynamicItem) {
+        let push = UIPushBehavior(items: [item], mode: .instantaneous)
+        push.magnitude = CGFloat(1.0) + CGFloat(2.0).arc4random
+        push.angle     = (2 * CGFloat.pi).arc4random
+        push.action = {[unowned push, weak self] in
+            self?.removeChildBehavior(push)
+        }
+        addChildBehavior(push)
     }
     
+    
+    func addItem(item: UIDynamicItem) {
+//        gravityBehavior.addItem(item)
+        collisionBehavior.addItem(item)
+        itemBehavior.addItem(item)
+        push(item)
+    }
+    
+    
     func removeItem(item: UIDynamicItem) {
-        gravityBehavior.removeItem(item)
+//        gravityBehavior.removeItem(item)
         collisionBehavior.removeItem(item)
-        collisionBehavior.removeItem(item)
+        itemBehavior.removeItem(item)
+        push(item)
     }
     
     
     //MARK: Init Add ChildBehavior
     override init() {
         super.init()
-        addChildBehavior(gravityBehavior)
+//        addChildBehavior(gravityBehavior)
         addChildBehavior(collisionBehavior)
-        addChildBehavior(collisionBehavior)
+        addChildBehavior(itemBehavior)
     }
     
     
